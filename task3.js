@@ -61,7 +61,12 @@ const success = (position) => {
   
   mapLink.textContent = 'Ссылка на карту';
   mapLink.target = '_blank';
- output.appendChild(mapLink);
+  
+  // -- отправка на сервер 
+  // websocket.send(mapLink);
+
+  // -- создание дом элемента
+  output.appendChild(mapLink);
   console.log(mapLink);
   
 }
