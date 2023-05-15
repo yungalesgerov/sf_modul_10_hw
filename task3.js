@@ -25,9 +25,11 @@ btnOpen.addEventListener('click', () => {
     writeToScreen("DISCONNECTED");
   };
   websocket.onmessage = function(evt) {
-    writeToScreen(
-      '<span style="color: blue;">RESPONSE: ' + input.value+'</span>'
-    );
+    if(!evt.data.includes('https')) {
+      writeToScreen(
+        '<span style="color: blue;">RESPONSE: ' + input.value+'</span>'
+      );
+    }
     input.value = '';
   };
   websocket.onerror = function(evt) {
@@ -63,11 +65,11 @@ const success = (position) => {
   mapLink.target = '_blank';
   
   // -- отправка на сервер 
-  // websocket.send(mapLink);
+  websocket.send(mapLink);
 
   // -- создание дом элемента
   output.appendChild(mapLink);
-  console.log(mapLink);
+  // console.log(mapLink);
   
 }
 
